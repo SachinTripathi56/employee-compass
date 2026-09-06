@@ -17,10 +17,19 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as EmployeeIndexRouteImport } from './routes/employee.index'
 import { Route as HrIndexRouteImport } from './routes/hr.index'
+import { Route as HrAnalyticsRouteImport } from './routes/hr.analytics'
 import { Route as HrDashboardRouteImport } from './routes/hr.dashboard'
+import { Route as HrSettingsRouteImport } from './routes/hr.settings'
+import { Route as HrCampaignsIndexRouteImport } from './routes/hr.campaigns.index'
+import { Route as HrCampaignsIdRouteImport } from './routes/hr.campaigns.$id'
+import { Route as HrCampaignsNewRouteImport } from './routes/hr.campaigns.new'
 import { Route as HrEmployeesIndexRouteImport } from './routes/hr.employees.index'
 import { Route as HrEmployeesIdRouteImport } from './routes/hr.employees.$id'
 import { Route as HrEmployeesImportRouteImport } from './routes/hr.employees.import'
+import { Route as HrInterviewsIndexRouteImport } from './routes/hr.interviews.index'
+import { Route as HrInterviewsIdRouteImport } from './routes/hr.interviews.$id'
+import { Route as HrReportsIndexRouteImport } from './routes/hr.reports.index'
+import { Route as HrReportsIdRouteImport } from './routes/hr.reports.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -62,9 +71,34 @@ const HrIndexRoute = HrIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HrRoute,
 } as any)
+const HrAnalyticsRoute = HrAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => HrRoute,
+} as any)
 const HrDashboardRoute = HrDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => HrRoute,
+} as any)
+const HrSettingsRoute = HrSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => HrRoute,
+} as any)
+const HrCampaignsIndexRoute = HrCampaignsIndexRouteImport.update({
+  id: '/campaigns/',
+  path: '/campaigns/',
+  getParentRoute: () => HrRoute,
+} as any)
+const HrCampaignsIdRoute = HrCampaignsIdRouteImport.update({
+  id: '/campaigns/$id',
+  path: '/campaigns/$id',
+  getParentRoute: () => HrRoute,
+} as any)
+const HrCampaignsNewRoute = HrCampaignsNewRouteImport.update({
+  id: '/campaigns/new',
+  path: '/campaigns/new',
   getParentRoute: () => HrRoute,
 } as any)
 const HrEmployeesIndexRoute = HrEmployeesIndexRouteImport.update({
@@ -82,6 +116,26 @@ const HrEmployeesImportRoute = HrEmployeesImportRouteImport.update({
   path: '/employees/import',
   getParentRoute: () => HrRoute,
 } as any)
+const HrInterviewsIndexRoute = HrInterviewsIndexRouteImport.update({
+  id: '/interviews/',
+  path: '/interviews/',
+  getParentRoute: () => HrRoute,
+} as any)
+const HrInterviewsIdRoute = HrInterviewsIdRouteImport.update({
+  id: '/interviews/$id',
+  path: '/interviews/$id',
+  getParentRoute: () => HrRoute,
+} as any)
+const HrReportsIndexRoute = HrReportsIndexRouteImport.update({
+  id: '/reports/',
+  path: '/reports/',
+  getParentRoute: () => HrRoute,
+} as any)
+const HrReportsIdRoute = HrReportsIdRouteImport.update({
+  id: '/reports/$id',
+  path: '/reports/$id',
+  getParentRoute: () => HrRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -90,24 +144,42 @@ export interface FileRoutesByFullPath {
   '/hr': typeof HrRouteWithChildren
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/hr/analytics': typeof HrAnalyticsRoute
   '/hr/dashboard': typeof HrDashboardRoute
+  '/hr/settings': typeof HrSettingsRoute
   '/employee/': typeof EmployeeIndexRoute
   '/hr/': typeof HrIndexRoute
+  '/hr/campaigns/$id': typeof HrCampaignsIdRoute
+  '/hr/campaigns/new': typeof HrCampaignsNewRoute
   '/hr/employees/$id': typeof HrEmployeesIdRoute
   '/hr/employees/import': typeof HrEmployeesImportRoute
+  '/hr/interviews/$id': typeof HrInterviewsIdRoute
+  '/hr/reports/$id': typeof HrReportsIdRoute
+  '/hr/campaigns/': typeof HrCampaignsIndexRoute
   '/hr/employees/': typeof HrEmployeesIndexRoute
+  '/hr/interviews/': typeof HrInterviewsIndexRoute
+  '/hr/reports/': typeof HrReportsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/hr/analytics': typeof HrAnalyticsRoute
   '/hr/dashboard': typeof HrDashboardRoute
+  '/hr/settings': typeof HrSettingsRoute
   '/employee': typeof EmployeeIndexRoute
   '/hr': typeof HrIndexRoute
+  '/hr/campaigns/$id': typeof HrCampaignsIdRoute
+  '/hr/campaigns/new': typeof HrCampaignsNewRoute
   '/hr/employees/$id': typeof HrEmployeesIdRoute
   '/hr/employees/import': typeof HrEmployeesImportRoute
+  '/hr/interviews/$id': typeof HrInterviewsIdRoute
+  '/hr/reports/$id': typeof HrReportsIdRoute
+  '/hr/campaigns': typeof HrCampaignsIndexRoute
   '/hr/employees': typeof HrEmployeesIndexRoute
+  '/hr/interviews': typeof HrInterviewsIndexRoute
+  '/hr/reports': typeof HrReportsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -117,12 +189,21 @@ export interface FileRoutesById {
   '/hr': typeof HrRouteWithChildren
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/hr/analytics': typeof HrAnalyticsRoute
   '/hr/dashboard': typeof HrDashboardRoute
+  '/hr/settings': typeof HrSettingsRoute
   '/employee/': typeof EmployeeIndexRoute
   '/hr/': typeof HrIndexRoute
+  '/hr/campaigns/$id': typeof HrCampaignsIdRoute
+  '/hr/campaigns/new': typeof HrCampaignsNewRoute
   '/hr/employees/$id': typeof HrEmployeesIdRoute
   '/hr/employees/import': typeof HrEmployeesImportRoute
+  '/hr/interviews/$id': typeof HrInterviewsIdRoute
+  '/hr/reports/$id': typeof HrReportsIdRoute
+  '/hr/campaigns/': typeof HrCampaignsIndexRoute
   '/hr/employees/': typeof HrEmployeesIndexRoute
+  '/hr/interviews/': typeof HrInterviewsIndexRoute
+  '/hr/reports/': typeof HrReportsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -133,24 +214,42 @@ export interface FileRouteTypes {
     | '/hr'
     | '/login'
     | '/register'
+    | '/hr/analytics'
     | '/hr/dashboard'
+    | '/hr/settings'
     | '/employee/'
     | '/hr/'
+    | '/hr/campaigns/$id'
+    | '/hr/campaigns/new'
     | '/hr/employees/$id'
     | '/hr/employees/import'
+    | '/hr/interviews/$id'
+    | '/hr/reports/$id'
+    | '/hr/campaigns/'
     | '/hr/employees/'
+    | '/hr/interviews/'
+    | '/hr/reports/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/forgot-password'
     | '/login'
     | '/register'
+    | '/hr/analytics'
     | '/hr/dashboard'
+    | '/hr/settings'
     | '/employee'
     | '/hr'
+    | '/hr/campaigns/$id'
+    | '/hr/campaigns/new'
     | '/hr/employees/$id'
     | '/hr/employees/import'
+    | '/hr/interviews/$id'
+    | '/hr/reports/$id'
+    | '/hr/campaigns'
     | '/hr/employees'
+    | '/hr/interviews'
+    | '/hr/reports'
   id:
     | '__root__'
     | '/'
@@ -159,12 +258,21 @@ export interface FileRouteTypes {
     | '/hr'
     | '/login'
     | '/register'
+    | '/hr/analytics'
     | '/hr/dashboard'
+    | '/hr/settings'
     | '/employee/'
     | '/hr/'
+    | '/hr/campaigns/$id'
+    | '/hr/campaigns/new'
     | '/hr/employees/$id'
     | '/hr/employees/import'
+    | '/hr/interviews/$id'
+    | '/hr/reports/$id'
+    | '/hr/campaigns/'
     | '/hr/employees/'
+    | '/hr/interviews/'
+    | '/hr/reports/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -234,11 +342,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HrIndexRouteImport
       parentRoute: typeof HrRoute
     }
+    '/hr/analytics': {
+      id: '/hr/analytics'
+      path: '/analytics'
+      fullPath: '/hr/analytics'
+      preLoaderRoute: typeof HrAnalyticsRouteImport
+      parentRoute: typeof HrRoute
+    }
     '/hr/dashboard': {
       id: '/hr/dashboard'
       path: '/dashboard'
       fullPath: '/hr/dashboard'
       preLoaderRoute: typeof HrDashboardRouteImport
+      parentRoute: typeof HrRoute
+    }
+    '/hr/settings': {
+      id: '/hr/settings'
+      path: '/settings'
+      fullPath: '/hr/settings'
+      preLoaderRoute: typeof HrSettingsRouteImport
+      parentRoute: typeof HrRoute
+    }
+    '/hr/campaigns/': {
+      id: '/hr/campaigns/'
+      path: '/campaigns'
+      fullPath: '/hr/campaigns/'
+      preLoaderRoute: typeof HrCampaignsIndexRouteImport
+      parentRoute: typeof HrRoute
+    }
+    '/hr/campaigns/$id': {
+      id: '/hr/campaigns/$id'
+      path: '/campaigns/$id'
+      fullPath: '/hr/campaigns/$id'
+      preLoaderRoute: typeof HrCampaignsIdRouteImport
+      parentRoute: typeof HrRoute
+    }
+    '/hr/campaigns/new': {
+      id: '/hr/campaigns/new'
+      path: '/campaigns/new'
+      fullPath: '/hr/campaigns/new'
+      preLoaderRoute: typeof HrCampaignsNewRouteImport
       parentRoute: typeof HrRoute
     }
     '/hr/employees/': {
@@ -262,6 +405,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HrEmployeesImportRouteImport
       parentRoute: typeof HrRoute
     }
+    '/hr/interviews/': {
+      id: '/hr/interviews/'
+      path: '/interviews'
+      fullPath: '/hr/interviews/'
+      preLoaderRoute: typeof HrInterviewsIndexRouteImport
+      parentRoute: typeof HrRoute
+    }
+    '/hr/interviews/$id': {
+      id: '/hr/interviews/$id'
+      path: '/interviews/$id'
+      fullPath: '/hr/interviews/$id'
+      preLoaderRoute: typeof HrInterviewsIdRouteImport
+      parentRoute: typeof HrRoute
+    }
+    '/hr/reports/': {
+      id: '/hr/reports/'
+      path: '/reports'
+      fullPath: '/hr/reports/'
+      preLoaderRoute: typeof HrReportsIndexRouteImport
+      parentRoute: typeof HrRoute
+    }
+    '/hr/reports/$id': {
+      id: '/hr/reports/$id'
+      path: '/reports/$id'
+      fullPath: '/hr/reports/$id'
+      preLoaderRoute: typeof HrReportsIdRouteImport
+      parentRoute: typeof HrRoute
+    }
   }
 }
 
@@ -278,19 +449,37 @@ const EmployeeRouteWithChildren = EmployeeRoute._addFileChildren(
 )
 
 interface HrRouteChildren {
+  HrAnalyticsRoute: typeof HrAnalyticsRoute
   HrDashboardRoute: typeof HrDashboardRoute
+  HrSettingsRoute: typeof HrSettingsRoute
   HrIndexRoute: typeof HrIndexRoute
+  HrCampaignsIdRoute: typeof HrCampaignsIdRoute
+  HrCampaignsNewRoute: typeof HrCampaignsNewRoute
   HrEmployeesIdRoute: typeof HrEmployeesIdRoute
   HrEmployeesImportRoute: typeof HrEmployeesImportRoute
+  HrInterviewsIdRoute: typeof HrInterviewsIdRoute
+  HrReportsIdRoute: typeof HrReportsIdRoute
+  HrCampaignsIndexRoute: typeof HrCampaignsIndexRoute
   HrEmployeesIndexRoute: typeof HrEmployeesIndexRoute
+  HrInterviewsIndexRoute: typeof HrInterviewsIndexRoute
+  HrReportsIndexRoute: typeof HrReportsIndexRoute
 }
 
 const HrRouteChildren: HrRouteChildren = {
+  HrAnalyticsRoute: HrAnalyticsRoute,
   HrDashboardRoute: HrDashboardRoute,
+  HrSettingsRoute: HrSettingsRoute,
   HrIndexRoute: HrIndexRoute,
+  HrCampaignsIdRoute: HrCampaignsIdRoute,
+  HrCampaignsNewRoute: HrCampaignsNewRoute,
   HrEmployeesIdRoute: HrEmployeesIdRoute,
   HrEmployeesImportRoute: HrEmployeesImportRoute,
+  HrInterviewsIdRoute: HrInterviewsIdRoute,
+  HrReportsIdRoute: HrReportsIdRoute,
+  HrCampaignsIndexRoute: HrCampaignsIndexRoute,
   HrEmployeesIndexRoute: HrEmployeesIndexRoute,
+  HrInterviewsIndexRoute: HrInterviewsIndexRoute,
+  HrReportsIndexRoute: HrReportsIndexRoute,
 }
 
 const HrRouteWithChildren = HrRoute._addFileChildren(HrRouteChildren)
